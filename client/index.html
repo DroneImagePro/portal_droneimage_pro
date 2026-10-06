@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://xrcctlqgxuylytjwfcaa.supabase.co wss://xrcctlqgxuylytjwfcaa.supabase.co; base-uri 'self'; form-action 'self'">
+<title>Client Portal &mdash; DroneImage.Pro</title>
+<link rel="stylesheet" href="portal.css">
+</head>
+<body>
+
+<div class="demo" id="banner">Build in progress &middot; not live</div>
+
+<header class="bar">
+  <a class="brand" href="https://droneimage.pro" aria-label="Aerialist, back to the main site"><span class="script">Aerialist</span><span class="word">DRONE IMAGE PROS</span></a>
+  <div class="bar__right">
+    <span id="who" class="who" hidden></span>
+    <button id="signOut" class="btn btn--ghost" type="button" hidden>Sign out</button>
+    <a id="phoneLink" href="tel:+17473832282">(747) 383-2282</a>
+  </div>
+</header>
+
+<!-- SIGN IN -->
+<main id="loginView" class="login" hidden>
+  <div class="login__card">
+    <h1>Client login</h1>
+    <form id="loginForm" novalidate>
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="username" required>
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password" required>
+      <button id="loginBtn" class="btn btn--solid" type="submit">Sign in</button>
+    </form>
+    <p id="loginMsg" class="msg" role="alert"></p>
+  </div>
+</main>
+
+<!-- PORTAL -->
+<main id="appView" class="main" hidden>
+
+  <div class="top">
+    <div>
+      <h1 id="tenantName"></h1>
+      <p id="tenantMeta"></p>
+    </div>
+    <label id="tenantPick" class="pick" hidden>Company <select id="tenantSel"></select></label>
+  </div>
+
+  <p id="notice" class="notice" role="alert" hidden></p>
+
+  <div class="stats">
+    <div class="stat"><div class="stat__label">Active jobs</div><div class="stat__value" id="statActive">0</div></div>
+    <div class="stat"><div class="stat__label">Deliverables ready</div><div class="stat__value" id="statReady">0</div></div>
+    <div class="stat"><div class="stat__label">Awaiting payment</div><div class="stat__value" id="statAwaiting">$0</div></div>
+    <div class="stat"><div class="stat__label">Next flight</div><div class="stat__value" id="statNext">None</div></div>
+  </div>
+
+  <section class="panel">
+    <div class="panel__head">
+      <h2 id="jobTitle"></h2>
+      <label id="jobPick" class="pick" hidden>Job <select id="jobSel"></select></label>
+    </div>
+    <div class="pipe" id="pipe"></div>
+    <div class="jobmeta" id="jobmeta" hidden></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel__head"><h2>Deliverables</h2></div>
+    <div id="deliverables"></div>
+    <p class="note">Final deliverables unlock automatically once payment clears. Raw flight assets stay with Aerialist and are not shown to clients.</p>
+  </section>
+
+  <section class="panel">
+    <div class="panel__head"><h2>Invoice</h2></div>
+    <div id="invoice"></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel__head"><h2>Job history</h2></div>
+    <div id="history"></div>
+  </section>
+
+  <section class="cta">
+    <h2>Questions about your job?</h2>
+    <div class="cta-row"><a class="btn btn--solid" href="tel:+17473832282">Call (747) 383-2282</a></div>
+    <p>Prefer to write? <a href="mailto:fly@droneimage.pro">fly@droneimage.pro</a></p>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="portal.js"></script>
+</body>
+</html>

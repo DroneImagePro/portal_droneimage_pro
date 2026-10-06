@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://*.supabase.co; base-uri 'self'; form-action 'self'">
+<title>Client Portal &mdash; DroneImage.Pro (test build)</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<div class="demo" id="banner">Test build &middot; Stage 1 &middot; read-only</div>
+
+<!-- SIGN IN -->
+<main id="loginView" class="login" hidden>
+  <div class="login__card">
+    <div class="brand"><span class="script">Aerialist</span><span class="word">DRONE IMAGE PRO's</span></div>
+    <h1>Client portal</h1>
+    <form id="loginForm" novalidate>
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="username" required>
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password" required>
+      <button id="loginBtn" class="btn btn--solid" type="submit">Sign in</button>
+    </form>
+    <p id="loginMsg" class="msg" role="alert"></p>
+  </div>
+</main>
+
+<!-- DASHBOARD -->
+<div id="appView" hidden>
+  <header class="bar">
+    <div class="brand brand--row"><span class="script">Aerialist</span><span class="word">DRONE IMAGE PRO's</span></div>
+    <div class="bar__right"><span id="who" class="who"></span><button id="signOut" class="btn btn--ghost" type="button">Sign out</button></div>
+  </header>
+
+  <main class="main">
+    <div class="top">
+      <div>
+        <h1 id="tenantName"></h1>
+        <p id="tenantMeta"></p>
+      </div>
+      <label id="tenantPick" class="pick" hidden>Company <select id="tenantSel"></select></label>
+    </div>
+
+    <p id="notice" class="notice" role="alert" hidden></p>
+
+    <div class="stats" id="stats"></div>
+
+    <section class="panel">
+      <div class="panel__head">
+        <h2 id="jobTitle"></h2>
+        <label id="jobPick" class="pick" hidden>Job <select id="jobSel"></select></label>
+      </div>
+      <div class="pipe" id="pipe"></div>
+      <div class="jobmeta" id="jobmeta"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel__head"><h2>Deliverables</h2></div>
+      <div id="deliverables"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel__head"><h2>Invoice</h2></div>
+      <div id="invoice"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel__head"><h2>Job history</h2></div>
+      <div id="history"></div>
+    </section>
+
+    <p class="testinfo" id="testInfo"></p>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

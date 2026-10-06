@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'self'; form-action 'self'">
+<title>Client Portal Demo &mdash; DroneImage.Pro</title>
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="demo.css">
+<style>
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.cta-row .btn{flex:1 1 200px}
+.cta{background:var(--surface-0);border:1px solid var(--border);border-radius:12px;padding:28px 20px;text-align:center;margin-top:8px}
+.cta h2{font-size:clamp(20px,5vw,26px);font-weight:500;margin-bottom:16px}
+.cta .cta-row{justify-content:center;max-width:520px;margin:0 auto}
+.cta p{color:var(--text-muted);font-size:14px;margin-top:16px}
+.cta p a{color:var(--accent);border-bottom:1px solid transparent}
+.cta p a:hover{border-bottom-color:var(--accent)}
+.cta-row .btn--outline{background:transparent}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.scope{scroll-margin-top:16px}
+.steplabel{color:var(--text-muted);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.lead{color:var(--text-secondary);font-size:14px;line-height:1.7;font-weight:300;margin:16px 0 4px}
+.scope fieldset{border:0;min-width:0}
+.scope h3{font-size:16px;font-weight:500;margin:18px 0 0}
+.scope .checks label{display:flex;gap:10px;align-items:center;text-transform:none;letter-spacing:0;font-size:14px;color:var(--text-secondary);margin:10px 0}
+.scope input[type=checkbox]{width:auto}
+.scope .formnav{display:flex;gap:12px;margin-top:22px}
+.scope .formnav .btn{flex:1}
+.scope .msg{min-height:1.4em}
+.summary{white-space:pre-wrap;background:var(--surface-3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;font-size:13px;line-height:1.7;color:var(--text-secondary);margin:14px 0}
+.next{margin:18px 0 0;padding:0;list-style:none}
+.next li{color:var(--text-secondary);font-size:14px;line-height:1.6;padding:10px 0;border-top:1px solid var(--border)}
+.next b{color:var(--text-primary)}
+.divider{display:flex;align-items:center;gap:14px;margin:8px 0 24px;color:var(--text-muted);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--border)}
+.pipe--mini{margin:18px 0 6px}
+</style>
+</head>
+<body>
+
+<div class="demo">Demo dashboard &middot; sample data &middot; not a live account</div>
+
+<header class="bar">
+  <a class="brand" href="https://droneimage.pro" aria-label="Aerialist, back to the main site"><span class="script">Aerialist</span><span class="word">DRONE IMAGE PRO's</span></a>
+  <div class="bar__right"><a class="btn btn--solid" href="app.html">Client login</a></div>
+</header>
+
+<main class="main">
+
+  <section class="intro">
+    <div>
+      <h2>Every job gets a portal like this</h2>
+      <p>Start with a bid below, then see how your job moves through the portal: deliverables, the certificate of insurance, the invoice and the job history in one place. Everything after the bid form is a demo with made-up data. Already a client? Use Client login at the top.</p>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn--solid" href="#scope">Scope a job</a>
+      <a class="btn" href="tel:+17473832282">Call (747) 383-2282</a>
+    </div>
+  </section>
+
+  <section class="panel scope" id="scope" aria-labelledby="scopeTitle">
+    <div class="panel__head"><h2 id="scopeTitle">Scope a job</h2><span class="steplabel" id="stepLabel">Step 1 of 3</span></div>
+    <div class="pipe pipe--mini" aria-hidden="true">
+      <div class="pipe__step current"><div class="pipe__dot">&#9679;</div><div class="pipe__label">Bid</div></div>
+      <div class="pipe__step"><div class="pipe__dot"></div><div class="pipe__label">Field</div></div>
+      <div class="pipe__step"><div class="pipe__dot"></div><div class="pipe__label">Processing</div></div>
+      <div class="pipe__step"><div class="pipe__dot"></div><div class="pipe__label">Delivery</div></div>
+      <div class="pipe__step"><div class="pipe__dot"></div><div class="pipe__label">Payment</div></div>
+    </div>
+    <p class="lead" id="scopeIntro">Every job starts with a bid. Tell us about the site and we reply privately with a preliminary price. No prices are published.</p>
+
+    <form id="scopeForm" novalidate>
+      <fieldset data-step="1">
+        <h3>The job</h3>
+        <label for="svc">What do you need?</label>
+        <select id="svc">
+          <option value="">Choose one</option>
+          <option>Stockpile volumes</option>
+          <option>Site mapping (orthomosaic and surface model)</option>
+          <option>Progress documentation</option>
+          <option>Roof and asset inspection</option>
+          <option>Not sure yet</option>
+        </select>
+        <label for="siteType">What kind of site?</label>
+        <select id="siteType">
+          <option value="">Choose one</option>
+          <option>Quarry or pit</option>
+          <option>Aggregate or material yard</option>
+          <option>Construction site</option>
+          <option>Roof or industrial facility</option>
+          <option>Other</option>
+        </select>
+        <label for="size">About how big?</label>
+        <select id="size">
+          <option value="">Choose one</option>
+          <option>Under 5 acres</option>
+          <option>5 to 25 acres</option>
+          <option>25 to 100 acres</option>
+          <option>Over 100 acres</option>
+          <option>Not sure</option>
+        </select>
+        <label for="loc">Site location</label>
+        <input id="loc" type="text" autocomplete="off" placeholder="City or address">
+      </fieldset>
+
+      <fieldset data-step="2" hidden>
+        <h3>Timing and deliverables</h3>
+        <label for="timing">When do you need it?</label>
+        <select id="timing">
+          <option value="">Choose one</option>
+          <option>As soon as possible</option>
+          <option>Within 2 weeks</option>
+          <option>Within a month</option>
+          <option>Just planning</option>
+        </select>
+        <label for="freq">How often?</label>
+        <select id="freq">
+          <option value="">Choose one</option>
+          <option>One time</option>
+          <option>Monthly</option>
+          <option>Quarterly</option>
+          <option>Not sure yet</option>
+        </select>
+        <label for="access">Any site requirements?</label>
+        <select id="access">
+          <option value="">Choose one</option>
+          <option>None that I know of</option>
+          <option>Escort required</option>
+          <option>Site safety training required</option>
+          <option>Not sure</option>
+        </select>
+        <label>What should we deliver?</label>
+        <div class="checks">
+          <label><input type="checkbox" name="deliv" value="Orthomosaic"> Orthomosaic</label>
+          <label><input type="checkbox" name="deliv" value="Surface model"> Surface model</label>
+          <label><input type="checkbox" name="deliv" value="Volume report"> Volume report</label>
+          <label><input type="checkbox" name="deliv" value="Point cloud"> Point cloud</label>
+          <label><input type="checkbox" name="deliv" value="Inspection report"> Inspection report</label>
+          <label><input type="checkbox" name="deliv" value="Progress comparisons"> Progress comparisons</label>
+        </div>
+      </fieldset>
+
+      <fieldset data-step="3" hidden>
+        <h3>How to reach you</h3>
+        <label for="cName">Name</label>
+        <input id="cName" type="text" autocomplete="name">
+        <label for="cCompany">Company</label>
+        <input id="cCompany" type="text" autocomplete="organization">
+        <label for="cPhone">Phone</label>
+        <input id="cPhone" type="tel" autocomplete="tel">
+        <label for="cEmail">Email</label>
+        <input id="cEmail" type="email" autocomplete="email">
+        <label for="cPrefer">Best way to reach you</label>
+        <select id="cPrefer">
+          <option value="">No preference</option>
+          <option>Phone call</option>
+          <option>Text message</option>
+          <option>Email</option>
+        </select>
+      </fieldset>
+
+      <p class="msg" id="scopeMsg" role="alert"></p>
+      <div class="formnav">
+        <button type="button" class="btn btn--ghost" id="scopeBack" hidden>Back</button>
+        <button type="button" class="btn btn--solid" id="scopeNext">Next</button>
+      </div>
+    </form>
+
+    <div id="scopeDone" hidden>
+      <h3 id="doneTitle" tabindex="-1">Your bid is ready to send</h3>
+      <p class="lead">Nothing has been sent yet. Tap Email or Text to send this to Aerialist. You get a preliminary price privately by call or email. No prices are published.</p>
+      <div class="summary" id="scopeSummary"></div>
+      <div class="cta-row">
+        <a class="btn btn--solid" id="sendEmail" href="mailto:fly@droneimage.pro">Email this to Aerialist</a>
+        <a class="btn" id="sendText" href="sms:+17473832282">Text it</a>
+        <a class="btn" href="tel:+17473832282">Call (747) 383-2282</a>
+      </div>
+      <div class="cta-row" style="margin-top:12px">
+        <button type="button" class="btn btn--ghost" id="copySummary">Copy summary</button>
+        <button type="button" class="btn btn--ghost" id="scopeRestart">Start over</button>
+      </div>
+      <ul class="next">
+        <li><b>Bid.</b> We reply privately with a preliminary price.</li>
+        <li><b>Field.</b> The pilot who scopes your job flies it, with ground control.</li>
+        <li><b>Processing.</b> Your data is processed and checked, and the QC record is kept.</li>
+        <li><b>Delivery.</b> Deliverables, the certificate of insurance and the invoice land in your portal.</li>
+        <li><b>Payment.</b> The last file unlocks when the invoice is paid.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="divider"><span>After the bid: your job in the portal (demo)</span></div>
+
+  <div class="top">
+    <div>
+      <h1>Welcome back, Sample Aggregates Co.</h1>
+      <p>Tenant 001-SAC &middot; Inland Empire, CA</p>
+    </div>
+    <button type="button" class="btn btn--ghost" id="resetDemo">Reset demo</button>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat__label">Active jobs</div><div class="stat__value">1</div></div>
+    <div class="stat"><div class="stat__label">Deliverables ready</div><div class="stat__value" id="statReady">4</div></div>
+    <div class="stat"><div class="stat__label">Awaiting payment</div><div class="stat__value" id="statAwaiting">$2,450</div></div>
+    <div class="stat"><div class="stat__label">Next flight</div><div class="stat__value" id="nextFlight"></div></div>
+  </div>
+
+  <section class="panel">
+    <div class="panel__head">
+      <h2>001-SAC-MAP-001 &mdash; Site Mapping &middot; <span id="jobStatus">In delivery</span></h2>
+    </div>
+    <div class="pipe" id="pipe">
+      <div class="pipe__step done"><div class="pipe__dot">&#10003;</div><div class="pipe__label">Bid</div></div>
+      <div class="pipe__step done"><div class="pipe__dot">&#10003;</div><div class="pipe__label">Field</div></div>
+      <div class="pipe__step done"><div class="pipe__dot">&#10003;</div><div class="pipe__label">Processing</div></div>
+      <div class="pipe__step current" id="pipeDelivery"><div class="pipe__dot">&#9679;</div><div class="pipe__label">Delivery</div></div>
+      <div class="pipe__step" id="pipePayment"><div class="pipe__dot"></div><div class="pipe__label">Payment</div></div>
+    </div>
+    <div class="jobmeta">
+      <b>Aircraft:</b> DJI Matrice 4E &nbsp;&middot;&nbsp; <b>Images:</b> 180 &nbsp;&middot;&nbsp; <b>GSD:</b> 1.56 cm &nbsp;&middot;&nbsp;
+      <b>CRS:</b> WGS84 / UTM Zone 11N &nbsp;&middot;&nbsp; <b>Processing:</b> WebODM &nbsp;&middot;&nbsp; <b>QC:</b> <span class="ok">Passed</span>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel__head"><h2>Deliverables</h2></div>
+    <div id="deliverables">
+      <div class="drow">
+        <div class="dname"><span class="n">Orthomosaic</span><span class="m">GeoTIFF &middot; 1.2 GB</span></div>
+        <span class="badge badge--ready">Ready</span>
+        <button class="btn" type="button" data-demo="download" data-file="Orthomosaic" data-detail="GeoTIFF, 1.2 GB">Download</button>
+      </div>
+      <div class="drow">
+        <div class="dname"><span class="n">Point cloud</span><span class="m">LAZ &middot; 840 MB</span></div>
+        <span class="badge badge--ready">Ready</span>
+        <button class="btn" type="button" data-demo="download" data-file="Point cloud" data-detail="LAZ, 840 MB">Download</button>
+      </div>
+      <div class="drow">
+        <div class="dname"><span class="n">Flight log</span><span class="m">CSV &middot; sample file</span></div>
+        <span class="badge badge--ready">Ready</span>
+        <button class="btn" type="button" data-demo="download-log" data-file="Flight log">Download</button>
+      </div>
+      <div class="drow">
+        <div class="dname"><span class="n">Certificate of Insurance (COI)</span><span class="m">PDF &middot; 1 MB</span></div>
+        <span class="badge badge--ready">Ready</span>
+        <div class="actions"><button class="btn" type="button" data-demo="coi">Review</button><button class="btn btn--ghost" type="button" data-demo="print">Print</button></div>
+      </div>
+      <div class="drow" id="row3d">
+        <div class="dname"><span class="n">3D textured model</span><span class="m">OBJ &middot; 3.1 GB</span></div>
+        <span class="badge badge--locked" id="badge3d">Locked</span>
+        <button class="btn btn--ghost" type="button" id="btn3d" data-demo="pay">Pay to unlock</button>
+      </div>
+    </div>
+    <p class="note">Your certificate of insurance is posted here to review and print anytime. The final deliverable unlocks automatically once payment clears. Raw flight assets stay with Aerialist and are not shown to clients.</p>
+  </section>
+
+  <section class="panel">
+    <div class="panel__head"><h2>Invoice</h2></div>
+    <div class="invoice">
+      <div class="invoice__amt"><small id="invHead">Balance due &middot; INV-001-SAC-014</small><span id="invAmt">$2,450.00</span></div>
+      <div class="actions">
+        <button class="btn btn--ghost" type="button" data-demo="invoice">View invoice</button>
+        <button class="btn btn--solid" type="button" id="btnPay" data-demo="pay">Pay now</button>
+      </div>
+    </div>
+    <p class="note" id="invNote">Paying releases the locked 3D model above and marks the job complete.</p>
+  </section>
+
+  <section class="panel">
+    <div class="panel__head"><h2>Job history</h2></div>
+    <div id="history">
+      <div class="hrow"><span class="hstatus">Bid accepted</span><span class="hnote">Scope and price agreed</span><span class="hdate">Sample date</span></div>
+      <div class="hrow"><span class="hstatus">In the field</span><span class="hnote">Flown with ground control and checkpoints</span><span class="hdate">Sample date</span></div>
+      <div class="hrow"><span class="hstatus">Processing</span><span class="hnote">QC record generated</span><span class="hdate">Sample date</span></div>
+      <div class="hrow"><span class="hstatus">In delivery</span><span class="hnote">Deliverables posted to the portal</span><span class="hdate">Sample date</span></div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Ready to talk about your job?</h2>
+    <div class="cta-row">
+      <a class="btn btn--solid" href="#scope">Scope a job</a>
+      <a class="btn" href="tel:+17473832282">Call (747) 383-2282</a>
+    </div>
+    <p>Prefer to write? <a href="mailto:fly@droneimage.pro">fly@droneimage.pro</a></p>
+  </section>
+
+</main>
+
+<!-- Demo pop-up -->
+<div class="modal" id="modal" hidden>
+  <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button type="button" class="modal__close" id="mClose" aria-label="Close">&times;</button>
+    <div class="modal__eyebrow">Demo</div>
+    <h3 id="mTitle"></h3>
+    <div id="mBody"></div>
+    <div class="modal__actions"><button type="button" class="btn btn--solid" id="mAct" hidden></button></div>
+  </div>
+</div>
+
+<script src="demo.js"></script>
+<script src="scope.js"></script>
+</body>
+</html>
